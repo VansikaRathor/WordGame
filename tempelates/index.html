@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Guessing Game</title>
+    <link rel="stylesheet" href="C:\Users\ratho\Searches\OneDrive\Desktop\Word Gussing Game\static\css">
+</head>
+<body>
+    <div class="container">
+        <h1>Word Guessing Game</h1>
+        <p>Word: {{ word }}</p>
+        <p>Tries Left: {{ tries }}</p>
+        <p>{{ message }}</p>
+        {% if tries > 0 and word.find('_') != -1 %}
+        <form action="{{ url_for('guess') }}" method="post">
+            <input type="text" name="guess" maxlength="1" required>
+            <button type="submit">Guess</button>
+        </form>
+        {% else %}
+        <a href="{{ url_for('index') }}">Play Again</a>
+        {% endif %}
+    </div>
+</body>
+</html>
